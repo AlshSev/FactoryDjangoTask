@@ -28,7 +28,7 @@ def create_message(request):
         if form.is_valid():
             message = form.save(commit=False)
             # Yes, it is stupid, I know
-            requests.post(f"http://{host}:8000/api/send", 
+            requests.post(f"https://{host}:443/api/send", 
                           json.dumps({"message": message.body}), 
                           headers={"token": request.user.profile.token})
             message.author = request.user
