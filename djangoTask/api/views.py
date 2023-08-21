@@ -50,12 +50,11 @@ def receive_update(request, *args, **kwargs):
             token = data["message"]["text"]
             chat_id = data["message"]["chat"]["id"]
         except:
-            return Response()
+            return Response({"detail": "No token or chat_id"})
         user = User.objects.filter(profile__token=token).first()
+        if user is None:
+            return Response({"detail": "User not found by token"})
         user.profile.telegram_id = chat_id
         user.save()
-        return Response({"detail": 
-                            {"token": token, "id": chat_id, "user_token": user.profile.token, 
-                             "user_tele_id": user.profile.telegram_id}
-                        })
-    return Response()
+        return Response({"detail": "OK"})
+    return Response({"detail": "No message provided"})
