@@ -3,5 +3,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.api_test)
+    path('send', views.send_message),
+    path('update', views.receive_update),
 ]

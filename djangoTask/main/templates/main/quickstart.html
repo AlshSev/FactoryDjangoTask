@@ -1,0 +1,8 @@
+{% extends 'main/base.html' %} {% block title %}Quickstart{% endblock %} 
+{% block content %}
+<br>
+<h2>Hello and thank you for checking out this little task</h2>
+<br>
+<p>We generated a token for you, here it is: <b>{{ user.profile.token }}</b></p>
+<p>Now, go to <a href="https://t.me/FactoryDjangoTask_bot">https://t.me/FactoryDjangoTask_bot</a> and send it your token so we will connect your Telegram account with this website</p>
+{% endblock %}
