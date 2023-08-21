@@ -30,7 +30,8 @@ def create_message(request):
             # Yes, it is stupid, I know
             requests.post(f"https://{host}:443/api/send", 
                           json.dumps({"message": message.body}), 
-                          headers={"token": request.user.profile.token})
+                          headers={"token": request.user.profile.token},
+                          verify=False)
             message.author = request.user
             message.save()
             return redirect("/home")
